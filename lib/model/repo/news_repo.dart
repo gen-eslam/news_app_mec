@@ -13,6 +13,7 @@ class NewsRepoImpl extends NewsRepo {
   @override
   Future<Either<Failures, NewsModel>> getNews() async {
     try {
+      // throw LocalFailures(errorMessage: "local error");
       Response response = await DioHelper.get(path: EndPoints.appleNews);
       return Right(NewsModel.fromJson(response.data));
     } on DioException catch (e) {

@@ -4,10 +4,15 @@ abstract class Failures {
   final String errorMessage;
 
   const Failures({required this.errorMessage});
+
+  @override
+  String toString() => errorMessage;
 }
 
 class LocalFailures extends Failures {
   LocalFailures({required super.errorMessage});
+  @override
+  String toString() => errorMessage;
 }
 
 class ServerFailure extends Failures {
