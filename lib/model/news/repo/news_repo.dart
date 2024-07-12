@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_application_1/errors.dart';
 import 'package:flutter_application_1/helper/dio_helper.dart';
 import 'package:flutter_application_1/helper/end_points.dart';
-import 'package:flutter_application_1/model/news_model.dart';
+import 'package:flutter_application_1/model/news/news_model.dart';
 
 abstract class NewsRepo {
   Future<Either<Failures, NewsModel>> getNews();

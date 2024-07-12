@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/cubit/product_cubit.dart';
 import 'package:flutter_application_1/helper/dio_helper.dart';
-import 'package:flutter_application_1/model/repo/news_repo.dart';
+import 'package:flutter_application_1/model/news/repo/news_repo.dart';
+import 'package:flutter_application_1/model/store/product_repo.dart';
 import 'package:flutter_application_1/news_cubit/news_cubit.dart';
+import 'package:flutter_application_1/screens/news_app.dart';
+import 'package:flutter_application_1/screens/product_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
@@ -17,35 +21,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+      // create: (context) =>S
+      //     ProductCubit(productRepo: ProductRepoImpl())..getAllProduct(),
       create: (context) => NewsCubit(newsRepo: NewsRepoImpl())..getNews(),
-      child: MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('News App'),
-          ),
-          body: BlocBuilder<NewsCubit, NewsState>(
-            builder: (context, state) {
-              if (state is NewsSuccess) {
-                return ListView.builder(
-                  itemCount: state.articles.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: Text(state.articles[index].title),
-                    );
-                  },
-                );
-              } else if (state is NewsError) {
-                return Center(
-                  child: Text(state.error),
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
-        ),
+      child: const MaterialApp(
+        home: NewsAppScreen(),
       ),
     );
   }

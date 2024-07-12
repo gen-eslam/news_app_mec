@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_application_1/model/articales_model.dart';
+import 'package:flutter_application_1/model/news/articales_model.dart';
 
 class NewsModel extends Equatable {
   final String status;
