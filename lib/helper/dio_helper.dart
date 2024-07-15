@@ -5,7 +5,7 @@ abstract class DioHelper {
   static final Dio _dio = Dio();
 
   static void init() {
-    _dio.options.baseUrl = EndPoints.baseUrl;
+    _dio.options.baseUrl = StoreEndPoint.baseUrl;
   }
 
   static Future<Response> get({
@@ -15,6 +15,17 @@ abstract class DioHelper {
     return await _dio.get(
       path,
       queryParameters: query,
+    );
+  }
+  static Future<Response> post({
+    required String path,
+    Map<String, dynamic>? query,
+    Map<String, dynamic>? data,
+  }) async {
+    return await _dio.post(
+      path,
+      queryParameters: query,
+      data: data,
     );
   }
 }

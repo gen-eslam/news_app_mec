@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubit/product_cubit.dart';
+import 'package:flutter_application_1/product_cubit/product_cubit.dart';
 import 'package:flutter_application_1/helper/dio_helper.dart';
 import 'package:flutter_application_1/model/news/repo/news_repo.dart';
 import 'package:flutter_application_1/model/store/product_repo.dart';
@@ -17,15 +17,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      // create: (context) =>S
-      //     ProductCubit(productRepo: ProductRepoImpl())..getAllProduct(),
-      create: (context) => NewsCubit(newsRepo: NewsRepoImpl())..getNews(),
+      create: (context) => ProductCubit(productRepo: ProductRepoImpl())
+        ..getAllProduct()
+        ..getAllCategory(),
+      // create: (context) => NewsCubit(newsRepo: NewsRepoImpl())..getNews(),
       child: const MaterialApp(
-        home: NewsAppScreen(),
+        home: ProductScreen(),
       ),
     );
   }

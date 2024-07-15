@@ -8,4 +8,7 @@ abstract class StoreEndPoint {
   static const String baseUrl = 'https://fakestoreapi.com';
   //prodycts
   static const String products = "/products";
+
+  static const String categories = "/products/categories";
+  static String productsInASpecificCategory ({required String category})=> "/products/category/$category";
 }

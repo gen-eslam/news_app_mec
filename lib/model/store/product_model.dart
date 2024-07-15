@@ -1,21 +1,21 @@
 import 'package:equatable/equatable.dart';
 
 class ProductModel extends Equatable {
-  int id;
-  String title;
-  num price;
-  String description;
-  String category;
-  String image;
-  Rating rating;
+  int? id;
+  String? title;
+  num? price;
+  String? description;
+  String? category;
+  String? image;
+  Rating? rating;
   ProductModel(
-      {required this.id,
-      required this.category,
-      required this.price,
-      required this.description,
-      required this.image,
-      required this.title,
-      required this.rating});
+      {this.id,
+      this.category,
+      this.price,
+      this.description,
+      this.image,
+      this.title,
+      this.rating});
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json["id"],
         category: json["category"],
@@ -27,6 +27,13 @@ class ProductModel extends Equatable {
           json["rating"],
         ),
       );
+  Map<String, dynamic> toJson() => {
+        "title": title,
+        "price": price,
+        "description": description,
+        "image": image,
+        "category": 'electronic'
+      };
   @override
   List<Object?> get props => [id, title, price, description, category, image];
 }
